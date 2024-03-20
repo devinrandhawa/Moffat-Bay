@@ -74,12 +74,12 @@
                         $reservation_id = $_GET['id'];
 
                         // Convert the ID to an integer for security and consistency
-                        $reservation_id = intval($reservation_id);
+                        $reservation_id = intval($reservation_ID);
 
                         // Query to fetch reservation details based on ID
                         $query = "SELECT r.*, g.first_name, g.last_name, g.telephone, g.email, rm.room_size 
-                                  FROM reservations r
-                                  INNER JOIN guests g ON r.guest_id = g.guest_id
+                                  FROM Reservations r
+                                  INNER JOIN Guests g ON r.guest_id = g.guest_id
                                   INNER JOIN Rooms rm ON r.room_id = rm.room_id
                                   WHERE reservation_id = $reservation_id";
                         $result = $con->query($query);
@@ -88,7 +88,7 @@
                         if ($result && $result->num_rows > 0) {
                             $row = $result->fetch_assoc();
                             echo "<tr>";
-                            echo "<td>" . $row['reservation_id'] . "</td>";
+                            echo "<td>" . $row['reservation_ID'] . "</td>";
                             echo "<td>" . $row['first_name'] . " " . $row['last_name'] . "</td>";
                             echo "<td>" . $row['room_id'] . "</td>";
                             echo "<td>" . $row['check_in_date'] . "</td>";

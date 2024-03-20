@@ -76,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         // output data of each row
                         while ($row = $result->fetch_assoc()) {
                             echo "<tr>";
-                            echo "<td>" . $row['reservation_id'] . "</td>";
+                            echo "<td>" . $row['reservation_ID'] . "</td>";
                             echo "<td>" . $row['first_name'] . "</td>";
                             echo "<td>" . $row['last_name'] . "</td>";
                             echo "<td>" . $row['email'] . "</td>";

@@ -35,7 +35,6 @@ h1 {
     width: 110%;
     border-collapse: collapse;
     font-size: 12px;
-   
 }
 
 .summary-table th,
@@ -108,8 +107,8 @@ h1 {
 
                     // Query to fetch reservation summary
                     $query = "SELECT r.*, g.first_name, g.last_name, rm.room_size 
-                              FROM reservations r
-                              INNER JOIN guests g ON r.guest_id = g.guest_id
+                              FROM Reservations r
+                              INNER JOIN Guests g ON r.guest_id = g.guest_id
                               INNER JOIN Rooms rm ON r.room_id = rm.room_id";
                     $result = $con->query($query);
 
@@ -117,15 +116,15 @@ h1 {
                     if ($result && $result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
                             echo "<tr>";
-                            echo "<td>" . $row['reservation_id'] . "</td>";
+                            echo "<td>" . $row['reservation_ID'] . "</td>";
                             echo "<td>" . $row['first_name'] . " " . $row['last_name'] . "</td>";
                             echo "<td>" . $row['room_id'] . "</td>";
                             echo "<td>" . $row['check_in_date'] . "</td>";
                             echo "<td>" . $row['check_out_date'] . "</td>";
                             echo "<td>" . $row['room_size'] . "</td>";
-                            echo "<td><a href='reservation_details.php?id=" . $row['reservation_id'] . "' class='details-link'>Details</a></td>";
-                            echo "<td><button class='confirmation-button' onclick='confirmReservation(" . $row['reservation_id'] . ")'>Confirm</button>";
-                            echo "<button class='cancel-button' onclick='cancelReservation(" . $row['reservation_id'] . ")'>Cancel</button></td>";
+                            echo "<td><a href='reservation_details.php?id=" . $row['reservation_ID'] . "' class='details-link'>Details</a></td>";
+                            echo "<td><button class='confirmation-button' onclick='confirmReservation(" . $row['reservation_ID'] . ")'>Confirm</button>";
+                            echo "<button class='cancel-button' onclick='cancelReservation(" . $row['reservation_ID'] . ")'>Cancel</button></td>";
                             echo "</tr>";
                         }
                     } else {
@@ -152,4 +151,4 @@ h1 {
         }
     </script>
 </body>
-</html>
+</html> 
